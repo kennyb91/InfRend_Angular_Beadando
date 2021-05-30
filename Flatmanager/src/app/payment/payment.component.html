@@ -1,0 +1,44 @@
+<div class="mt-5 d-flex justify-content-center">
+    <div class="col-md-6">
+        <h1 class="d-flex justify-content-center">Issue New Payment</h1>
+        <div class="justify-content-center">
+
+            <div class="alert alert-danger mt-5" role="alert" *ngIf="error">
+                {{ error}}
+            </div>
+            <div class="alert alert-success mt-5" role="alert" *ngIf="success">
+                {{ success }}
+            </div>
+
+            <form [formGroup]="paymentForm">
+                <label for="tenant">Tenant's name</label>
+                <select name="tenant" class="form-control" id="tenant" formControlName="tenant"
+                    [compareWith]="compareTenants">
+                    <option value="" selected="isSelected">Select a tenant</option>
+                    <option [ngValue]="tenant" *ngFor="let tenant of tenants;let i = index" [value]="i+1"> {{ tenant.name
+                        }}
+                </select>
+                <div class="text-danger" *ngIf="paymentForm.get('tenant').invalid && (paymentForm.get('tenant').dirty || paymentForm.get('tenant').touched)">
+                    <div *ngIf="paymentForm.get('tenant').errors.required"> Field must not be empty.</div>
+                </div>
+    
+
+
+                <label for="amount">Paid amount</label>
+                <input type="number" class="form-control" name="amount" id="amount" formControlName="amount">
+                <div class="text-danger" *ngIf="paymentForm.get('amount').invalid && (paymentForm.get('amount').dirty || paymentForm.get('amount').touched)">
+                    <div *ngIf="paymentForm.get('amount').errors.min"> Minimum value of payment is 1 EUR</div>
+                </div>
+
+                <label for="date">Date</label>
+                <input type="date" class="form-control" name="date" id="date" formControlName="date" [value]="today">
+                <div class="text-danger" *ngIf="paymentForm.get('date').invalid && (paymentForm.get('date').dirty || paymentForm.get('date').touched)">
+                    <div *ngIf="paymentForm.get('date').errors.required"> Field must not be empty.</div>
+                </div>
+
+                <div class="d-flex justify-content-center"> <button class="btn btn-outline-success mt-5"
+                        (click)="addPayment()">Issue Payment</button> </div>
+            </form>
+        </div>
+    </div>
+</div>

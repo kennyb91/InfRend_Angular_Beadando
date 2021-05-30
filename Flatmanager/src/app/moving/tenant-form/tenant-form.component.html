@@ -1,0 +1,46 @@
+<div class="mt-5 d-flex justify-content-center">
+    <div class="col-md-6">
+        <h1 class="d-flex justify-content-center">New tenant for apartment {{apartment?.number }}</h1>
+        <div class="mb-10 col-md-12 d-flex justify-content-center">
+            <button class="btn btn-outline-primary mr-5" (click)="new = true">New tenant</button>
+            <button class="btn btn-outline-primary" (click)="new = false">Select from list</button>
+        </div>
+        <div class="col-md-12">
+
+            <div class="alert alert-danger mt-5" role="alert" *ngIf="error">
+                {{ error}}
+            </div>
+            
+            <form [formGroup]="tenantForm">
+
+                <!-- new -->
+                <label for="name">Name</label>
+                <input *ngIf="new" type="text" class="form-control" id="name" formControlName="name">
+
+                <!-- if already exists -->
+                <select *ngIf="!new" class="form-control" name="name" id="name" formControlName="name"
+                    [compareWith]="compareTenants" (change)="onChange($event.target.value)">
+                    <option [ngValue]="tenant" *ngFor="let tenant of tenants;let i = index" [value]="i"> {{ tenant.name
+                        }}
+                </select>
+                <div class="text-danger" *ngIf="tenantForm.get('name').invalid && (tenantForm.get('name').dirty || tenantForm.get('name').touched)">
+                    <div *ngIf="tenantForm.get('name').errors.required"> Please provide a valid name. </div>
+                </div>
+
+                <!-- new -->
+                <label *ngIf="new" for="balance">Balance</label>
+                <input *ngIf="new" type="number" class="form-control" id="balance" formControlName="balance">
+                <div class="text-danger" *ngIf="tenantForm.get('balance').invalid && (tenantForm.get('balance').dirty || tenantForm.get('balance').touched)">
+                    <div *ngIf="tenantForm.get('balance').errors.required"> Please provide the balance of the tenant. (Even if 0$) </div>
+                </div>
+
+                <!-- if already exists -->
+                <input *ngIf="!new" type="number" class="form-control" id="balance" formControlName="balance"
+                    hidden="hidden">
+                <div class="d-flex justify-content-center">
+                    <button class="btn btn-outline-success mt-5 justify-content-center" (click)="addTenant()">Save new
+                        tenant</button>
+                </div>
+            </form>
+        </div>
+    </div>

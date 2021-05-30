@@ -1,0 +1,53 @@
+<!--
+<div *ngIf="!exists, else elseBlock">
+    <h3>{{apartment.number}} </h3>--No tenant--
+    <a class="btn btn-light" (click)="addTenantTo(apartment.id)" > <fa-icon [icon]="faUserPlus" size="lg"></fa-icon></a>
+
+</div>
+<ng-template #elseBlock>
+    <h3>{{apartment.number}}</h3>{{tenant.name}}  
+    <a class="btn btn-light" (click)="removeTenant()"> <fa-icon [icon]="faUserSlash" size="lg" ></fa-icon></a>
+</ng-template>
+ -->
+
+
+<div class="album py-5 bg-light">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-1 g-3">
+            <div *ngIf="!exists, else elseBlock">
+                <div class="card shadow-sm">
+                    <img src="./assets/emptyflat.jpg" alt="szephaz" width="200" height="150">
+
+                    <div class="card-body">
+                        <p class="card-text">{{apartment.number}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-light" (click)="addTenantTo(apartment.id)">
+                                    <fa-icon [icon]="faUserPlus" size="lg"></fa-icon>
+                                </a>
+                            </div>
+                            <small class="text-muted">No Tenant</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <ng-template #elseBlock>
+                <div class="card shadow-sm">
+                    <img src="./assets/flat.jpg" alt="szephaz" width="170" height="100">
+
+                    <div class="card-body">
+                        <p class="card-text">{{apartment.number}}</p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="btn-group">
+                                <a class="btn btn-light" (click)="removeTenant()">
+                                    <fa-icon [icon]="faUserSlash" size="lg"></fa-icon>
+                                </a>
+                            </div>
+                            <small class="text-muted">{{tenant.name}}</small>
+                        </div>
+                    </div>
+                </div>
+            </ng-template>
+        </div>
+    </div>
+</div>

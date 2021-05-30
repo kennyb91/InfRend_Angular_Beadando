@@ -1,0 +1,40 @@
+<div class="col-md-12 d-flex justify-content-center">
+    <table class="table table-bordered table-striped table-hover">
+
+        <thead class="thead-dark">
+            <tr scope="row">
+                <th colspan="3">
+                    <h2>General Report</h2>
+                </th>
+            </tr>
+        </thead>
+
+        <tr>
+            <th class="table-secondary" colspan="3"> Balance on {{dateStart}}: <i> {{totalBalance + totalPayment -
+                    totalFee}}EUR </i></th>
+        </tr>
+
+        <tr>
+            <th>Tenants</th>
+            <th>Fees</th>
+            <th>Payments</th>
+        </tr>
+
+        <tr scope="row" *ngFor="let tenant of tenants;let i = index">
+            <td class="col-md-4">{{tenants[i].name}}</td>
+            <td class="col-md-4">{{fees[i]}}EUR</td>
+            <td class="col-md-4">{{payments[i]}}EUR</td>
+        </tr>
+
+        <tr scope="row" class="table-secondary">
+            <td class="col-md-4"><b>Total:</b></td>
+            <td class="col-md-4"><b>{{totalFee}}EUR</b></td>
+            <td class="col-md-4"><b>{{totalPayment}}EUR</b></td>
+        </tr>
+
+        <thead>
+            <th class="table-secondary" colspan="3"> Balance on {{dateEnd}}: <i>{{totalBalance}}EUR</i></th>
+        </thead>
+
+    </table>
+</div>

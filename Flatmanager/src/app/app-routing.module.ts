@@ -7,8 +7,12 @@ import { ReportComponent } from './request-report/report/report.component';
 import { GeneralReportComponent } from './request-report/general-report/general-report.component';
 import { RequestReportComponent } from './request-report/request-report.component';
 import { TenantFormComponent } from './moving/tenant-form/tenant-form.component';
+import {HomeComponent} from './home/home.component';
 
 const routes: Routes = [
+  {
+  path: 'home',
+    component: HomeComponent,},
   {
     path: 'moving',
     component: MovingComponent,

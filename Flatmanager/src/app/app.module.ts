@@ -14,6 +14,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TenantFormComponent } from './moving/tenant-form/tenant-form.component';
 import { RequestReportComponent } from './request-report/request-report.component';
 import { GeneralReportComponent } from './request-report/general-report/general-report.component';
+import { HomeComponent } from './home/home.component';
 // https://www.npmjs.com/package/@fortawesome/angular-fontawesome
 
 @NgModule({
@@ -27,6 +28,7 @@ import { GeneralReportComponent } from './request-report/general-report/general-
     TenantFormComponent,
     RequestReportComponent,
     GeneralReportComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,

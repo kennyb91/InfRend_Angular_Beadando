@@ -15,24 +15,28 @@
                 <select name="tenant" class="form-control" id="tenant" formControlName="tenant"
                     [compareWith]="compareTenants">
                     <option value="" selected="isSelected">Select a tenant</option>
-                    <option [ngValue]="tenant" *ngFor="let tenant of tenants;let i = index" [value]="i+1"> {{ tenant.name
+                    <option [ngValue]="tenant" *ngFor="let tenant of tenants;let i = index" [value]="i+1"> {{
+                        tenant.name
                         }}
                 </select>
-                <div class="text-danger" *ngIf="paymentForm.get('tenant').invalid && (paymentForm.get('tenant').dirty || paymentForm.get('tenant').touched)">
+                <div class="text-danger"
+                    *ngIf="paymentForm.get('tenant').invalid && (paymentForm.get('tenant').dirty || paymentForm.get('tenant').touched)">
                     <div *ngIf="paymentForm.get('tenant').errors.required"> Field must not be empty.</div>
                 </div>
-    
+
 
 
                 <label for="amount">Paid amount</label>
                 <input type="number" class="form-control" name="amount" id="amount" formControlName="amount">
-                <div class="text-danger" *ngIf="paymentForm.get('amount').invalid && (paymentForm.get('amount').dirty || paymentForm.get('amount').touched)">
+                <div class="text-danger"
+                    *ngIf="paymentForm.get('amount').invalid && (paymentForm.get('amount').dirty || paymentForm.get('amount').touched)">
                     <div *ngIf="paymentForm.get('amount').errors.min"> Minimum value of payment is 1 EUR</div>
                 </div>
 
                 <label for="date">Date</label>
                 <input type="date" class="form-control" name="date" id="date" formControlName="date" [value]="today">
-                <div class="text-danger" *ngIf="paymentForm.get('date').invalid && (paymentForm.get('date').dirty || paymentForm.get('date').touched)">
+                <div class="text-danger"
+                    *ngIf="paymentForm.get('date').invalid && (paymentForm.get('date').dirty || paymentForm.get('date').touched)">
                     <div *ngIf="paymentForm.get('date').errors.required"> Field must not be empty.</div>
                 </div>
 

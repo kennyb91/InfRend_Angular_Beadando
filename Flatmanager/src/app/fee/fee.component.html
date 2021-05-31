@@ -2,8 +2,10 @@
     <div class="col-md-6">
         <h1 class="d-flex justify-content-center">Create new fee</h1>
         <div class="mb-10 col-md-12 d-flex justify-content-center">
-            <button class="btn btn-outline-primary" (click)="shared = false">General fee (based on m<sup>2</sup>)</button>
-            <button class="btn btn-outline-primary ml-5" (click)="shared = true">Shared fee (divided between active tenants)</button>
+            <button class="btn btn-outline-primary" (click)="shared = false">General fee (based on
+                m<sup>2</sup>)</button>
+            <button class="btn btn-outline-primary ml-5" (click)="shared = true">Shared fee (divided between active
+                tenants)</button>
         </div>
         <div class="alert alert-danger mt-5" role="alert" *ngIf="error">
             {{ error}}
@@ -17,20 +19,25 @@
             <input type="number" *ngIf="shared" class="form-control" name="amount" id="amount" formControlName="amount">
 
             <label for="amount" *ngIf="!shared"> Cost (based on m<sup>2</sup>) </label>
-            <input type="number" *ngIf="!shared" class="form-control" name="amount" id="amount" formControlName="amount">
-            <div class="text-danger" *ngIf="feeForm.get('amount').invalid && (feeForm.get('amount').dirty || feeForm.get('amount').touched)">
+            <input type="number" *ngIf="!shared" class="form-control" name="amount" id="amount"
+                formControlName="amount">
+            <div class="text-danger"
+                *ngIf="feeForm.get('amount').invalid && (feeForm.get('amount').dirty || feeForm.get('amount').touched)">
                 <div *ngIf="feeForm.get('amount').errors.min"> Minimum value is 1</div>
             </div>
 
             <label for="description">Description</label>
-            <input type="text" class="form-control" name="description" id="description" formControlName="description" placeholder="Please provide a description">
-            <div class="text-danger" *ngIf="feeForm.get('description').invalid && (feeForm.get('description').dirty || feeForm.get('description').touched)">
+            <input type="text" class="form-control" name="description" id="description" formControlName="description"
+                placeholder="Please provide a description">
+            <div class="text-danger"
+                *ngIf="feeForm.get('description').invalid && (feeForm.get('description').dirty || feeForm.get('description').touched)">
                 <div *ngIf="feeForm.get('description').errors.required"> This field is required</div>
             </div>
 
             <label for="date">Date</label>
             <input type="date" class="form-control" name="date" id="date" formControlName="date" [value]="today">
-            <div class="text-danger" *ngIf="feeForm.get('date').invalid && (feeForm.get('date').dirty || feeForm.get('date').touched)">
+            <div class="text-danger"
+                *ngIf="feeForm.get('date').invalid && (feeForm.get('date').dirty || feeForm.get('date').touched)">
                 <div *ngIf="feeForm.get('date').errors.required"> This field is required</div>
             </div>
 
